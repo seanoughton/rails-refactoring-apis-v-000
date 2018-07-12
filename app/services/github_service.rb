@@ -24,6 +24,7 @@ class GithubService
     response = Faraday.get "https://api.github.com/user/repos", {}, {'Authorization' => "token #{self.access_token}", 'Accept' => 'application/json'}
     repos_array = JSON.parse(response.body)
     repos_array.map{|repo| GithubRepo.new(repo) }
+    #goes through the JSON object array and creates a ruby object for each repo with a name and a url
   end
 
   def create_repo(name)
