@@ -7,6 +7,8 @@ class ApplicationController < ActionController::Base
   private
 
     def authenticate_user
+      #the redirect url for github is baked into the github app/developer settings
+      byebug
       redirect_to "https://github.com/login/oauth/authorize?client_id=#{ENV['GITHUB_CLIENT']}&scope=repo" if !logged_in?
     end
 
